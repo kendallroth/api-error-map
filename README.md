@@ -63,3 +63,4 @@ const errorMessageDefault = getError(response.error, "Something went wrong!");
 ## Miscellaneous
 
 > Project boilerplate from: [`flexdinesh/npm-module-boilerplate`](https://github.com/flexdinesh/npm-module-boilerplate)
+
