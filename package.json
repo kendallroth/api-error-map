@@ -1,0 +1,67 @@
+{
+  "name": "@kendallroth/api-error-map",
+  "version": "0.1.0",
+  "description": "Simple API error code mapping",
+  "main": "./lib/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "format": "prettier --write {src,test}/**/*.js",
+    "test": "npm run lint && npm run test:only",
+    "test:cover": "npm run test:only -- --coverage",
+    "test:prod": "cross-env BABEL_ENV=production npm run test",
+    "test:only": "jest --verbose",
+    "test:watch": "npm run test:only -- --watch",
+    "lint": "eslint src test",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
+    "prepublish": "npm run clean && npm run test && npm run build"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kendallroth/api-error-map.git"
+  },
+  "keywords": [
+    "javascript",
+    "errors"
+  ],
+  "author": "Kendall Roth <kendall@kendallroth.ca> (https://www.kendallroth.ca)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kendallroth/api-error-map/issues"
+  },
+  "homepage": "https://github.com/kendallroth/api-error-map#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/register": "^7.10.3",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^26.1.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-minify": "^0.5.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "jest-expect-message": "^1.0.2",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,test}/**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
